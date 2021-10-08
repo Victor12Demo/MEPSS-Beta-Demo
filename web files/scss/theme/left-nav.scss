@@ -1,0 +1,30 @@
+.interior-nav {
+  li {
+    margin-bottom: 0;
+    padding: 1rem;
+    &.parent-page {
+      background-color: theme-color('secondary-color');
+      color: $white;
+      font-weight: bold;  
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid theme-color('gray');
+    }
+    a {
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      color: theme-color('black');
+    }
+    &:hover {
+      a {
+        color: theme-color('primary-color');
+      }
+    }
+    &.Highlight {
+      a {
+        color: theme-color('secondary-color');
+      }
+    }
+  }
+}

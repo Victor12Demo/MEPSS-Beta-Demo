@@ -1,0 +1,31 @@
+.nav-sidenav {
+  width: 350px;
+  right: -360px;
+  -webkit-transition: right .3s ease-in-out;
+  transition: right .3s ease-in-out;
+  z-index: 1000;
+  @include media-breakpoint-down(xs) { 
+    width: 100%;
+    right: -100%; 
+  }
+  ul {
+    &.nav {
+      li {
+        &.nav-item {
+          a {
+            font-size: 0.9rem;
+            color: theme-color('black');
+          }
+        }
+      } 
+    }
+  }
+  &.active {
+    right: 0;
+  }
+  .sidenav-close {
+    &.open {
+      right: 2rem;
+    }
+  }
+}

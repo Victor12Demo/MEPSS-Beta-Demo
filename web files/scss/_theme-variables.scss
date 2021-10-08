@@ -1,0 +1,132 @@
+/** ===========================================
+  # Theme Type Settings
+============================================ */
+$primary-font: 'Inter', sans-serif;
+$secondary-font: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+$fa-font: 'FontAwesome';
+$font-size-base: 1rem !default; // Assumes the browser default, typically '16px'
+$smaller-font-size: 70%;
+$font-weight-600: 600!default;
+$font-weight-500: 500!default;
+
+/** ===========================================
+  # Theme Color Pallette
+============================================ */
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "primary-color": #00A1DB,
+  "secondary-color":#D30B5C,
+  "tertiary-color": #FF9B01,
+  "light-gray": #f1f6f7, 
+  "gray": #5c6771,
+  "black": $black,
+  "white": $white,
+), $theme-colors);
+  
+/** ===========================================
+  # Theme Text and BG Hover Styles
+============================================ */
+@each $color, $value in $theme-colors {
+  // Generate `.bg-*` color utilities
+  @include bg-variant('.bg-#{$color}', $value);
+  
+  // Generate `.bg-hover*` color utilities
+  .bg-hover-#{$color} {
+    &:hover {
+      background-color: #{$value} !important;
+    }
+  }
+
+  // Generate `.text-*` color utilities
+  @include text-emphasis-variant(".text-#{$color}", $value);
+  
+  .text-hover-#{$color} {
+    &:hover {
+      color: #{$value} !important;
+    }
+  }
+
+  // Generate `.border-*` color utilities
+  .border-#{$color} {
+    border-color: $value !important;
+  }
+  // Generate `.btn-*` color utilities
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+
+  // Generate `.btn-*` color utilities
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+/** ===========================================
+  # Spacing
+============================================ */
+$spacers: map-merge(
+  (
+    6: ($spacer * 4),  		
+    7: ($spacer * 5),      
+    8: ($spacer * 6),   
+    9: ($spacer * 7),   
+    10: ($spacer * 9)  
+  ),
+  $spacers
+);
+
+/** ===========================================
+  # Sizing
+============================================ */
+// Height and Width Classes
+// This variable affects the `.h-*` and `.w-*` classes.
+// Iterate for what you need.
+$sizes: () !default;
+@for $i from 1 through 1000 {
+  @if $i <= 100 {
+    @if $i%5 == 0 {
+      $holdingArrayPercent: (
+        // Escape the Percentage Sign
+        '#{$i}': #{$i}#{'%'}
+      );
+      $sizes: map-merge($sizes, $holdingArrayPercent);
+      $holdingArrayPixels: (
+      '#{$i}p': #{$i}px
+      );
+      $sizes: map-merge($sizes, $holdingArrayPixels);
+    }
+  }
+  @if $i%25 == 0 {
+    $holdingArrayPixels: (
+      '#{$i}p': #{$i}px
+    );
+    $sizes: map-merge($sizes, $holdingArrayPixels);
+  }
+}
+
+//Loop through each breakpoint and provide classes for the sizes within the sizes map from previous loop
+
+@each $breakpoint-key, $breakpoint in $grid-breakpoints {
+  @media (min-width: #{$breakpoint}) {
+    @each $prop, $abbrev in (width: w-#{$breakpoint-key}, height: h-#{$breakpoint-key}) {
+      @each $size, $length in $sizes {
+          html .#{$abbrev}-#{$size} { #{$prop}: #{$length} !important;}
+      }
+    }
+  }
+}
+
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-caret:                                true !default;
+$enable-rounded:                              true !default;
+$enable-shadows:                              true !default;
+$enable-gradients:                            false !default;
+$enable-transitions:                          true !default;
+$enable-prefers-reduced-motion-media-query:   true !default;
+$enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
+$enable-grid-classes:                         true !default;
+$enable-pointer-cursor-for-buttons:           true !default;
+$enable-print-styles:                         true !default;
+$enable-responsive-font-sizes:                true !default;
+$enable-validation-icons:                     true !default;
+$enable-deprecation-messages:                 true !default;  

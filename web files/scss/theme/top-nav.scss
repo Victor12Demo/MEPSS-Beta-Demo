@@ -1,0 +1,30 @@
+.menu-hamburger {
+  background-color: transparent;
+  border: none;
+  @include media-breakpoint-up(sm){
+    bottom: calc(50% - 23px);
+  }
+  span {
+    width: 30px;
+    height: 4px;
+    display: block;
+    margin-bottom: 4px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+.navbar-nav {
+  li {
+    &.nav-item {
+      a {
+        color: theme-color('black');
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+  }
+}
+.searchNav{
+float: right;
+}

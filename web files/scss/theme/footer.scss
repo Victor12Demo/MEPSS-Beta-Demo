@@ -1,0 +1,45 @@
+footer {
+  ul {
+    &.footer-nav {
+      font-size: 0.875rem;
+      font-weight: $font-weight-500;
+      li {
+        margin-bottom: 0;
+        a {
+          @include media-breakpoint-down(xs) {
+            line-height: 1.8; 
+          }
+        } 
+      }
+    }
+  }
+  .change-font {
+    a {
+      width: 30px;
+      height: 25px;
+      line-height: 25px;
+      display: inline-block;
+      text-align: center;
+      &.size {
+        &.font-size-1 {
+          font-size: 0.8rem;
+        }
+        &.font-size-2 {
+          font-size: 0.9rem;
+        }
+        &.font-size-3 {
+          font-size: 1rem;
+        }
+        &.active {
+          background: $black;
+          color: $white;
+        }
+        &.active,
+        &:hover,
+        &:visited {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

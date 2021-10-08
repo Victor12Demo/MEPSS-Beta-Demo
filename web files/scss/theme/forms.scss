@@ -1,0 +1,16 @@
+textarea {
+  &.form-control {
+    height: 10.125rem;
+  }
+}
+label {
+  font-size: ($font-size-base - 0.15rem);
+  font-weight: 500;
+}
+.form-group {
+  &.has-error {
+    input, select, textarea {
+      border: 1px solid $danger;
+    }
+  }
+}

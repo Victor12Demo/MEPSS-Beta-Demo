@@ -1,0 +1,44 @@
+{
+	"name": "spacejet",
+	"version": "1.0.0",
+	"description": "Solodev SpaceJet Theme",
+	"main": "index.js",
+	"dependencies": {
+		"@fortawesome/fontawesome-free": "^5.8.1",
+		"@nodelib/fs.stat": "^2.0.3",
+		"autoprefixer": "^9.7.4",
+		"bootstrap": "^4.3.1",
+		"bootstrap-validator": "^0.11.9",
+		"jquery": "^3.4.0",
+		"popper.js": "^1.16.1",
+		"shx": "^0.3.2",
+		"slick-carousel": "^1.8.1",
+		"uglify-js": "^3.7.6"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"css": "npm-run-all css-compile css-prefix css-minify",
+		"css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/app.scss ./../www/_/css/app.css",
+		"css-prefix": "postcss --config node_modules/bootstrap/build/postcss.config.js --replace ./../www/_/css/*.css",
+		"css-minify": "cleancss --level 1 --source-map --source-map-inline-sources --output ./../www/_/css/app.min.css ./../www/_/css/app.css",
+		"js": "npm-run-all js-compile js-minify",
+		"js-compile": "shx cat node_modules/jquery/dist/jquery.slim.min.js js/nl.txt node_modules/popper.js/dist/umd/popper.min.js js/nl.txt node_modules/bootstrap/dist/js/bootstrap.min.js js/nl.txt node_modules/bootstrap-validator/dist/validator.min.js js/nl.txt node_modules/slick-carousel/slick/slick.min.js js/nl.txt node_modules/@fortawesome/fontawesome-free/js/fontawesome.js js/nl.txt js/slider.js js/nl.txt js/mobilenav.js js/nl.txt js/main.js > ./../www/_/js/app.js",
+		"js-minify": "uglifyjs --output ./../www/_/js/app.min.js ./../www/_/js/app.js",
+		"compile": "npm-run-all css js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/solodev/spacejet.git"
+	},
+	"keywords": [
+		"solodev",
+		"dcx",
+		"theme"
+	],
+	"author": "solodev",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/solodev/spacejet/issues"
+	},
+	"homepage": "https://github.com/solodev/spacejet#readme"
+}
